@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "URL Shorter Server", "URL Shorter\URL Shorter Server.csproj", "{B9EE6A0A-ADE8-490D-9904-BD5996E7CFD5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "URL Shorter Client", "URL Shorter Client\URL Shorter Client.csproj", "{5A76D2CD-D154-4356-9215-385AD2D1A36A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9EE6A0A-ADE8-490D-9904-BD5996E7CFD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9EE6A0A-ADE8-490D-9904-BD5996E7CFD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9EE6A0A-ADE8-490D-9904-BD5996E7CFD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9EE6A0A-ADE8-490D-9904-BD5996E7CFD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A76D2CD-D154-4356-9215-385AD2D1A36A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A76D2CD-D154-4356-9215-385AD2D1A36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A76D2CD-D154-4356-9215-385AD2D1A36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A76D2CD-D154-4356-9215-385AD2D1A36A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A1F80DAF-C467-4B97-AD6F-3E05891F4B2F}
+	EndGlobalSection
+EndGlobal

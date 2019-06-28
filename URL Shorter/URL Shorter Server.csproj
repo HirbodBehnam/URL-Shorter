@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>URL_Shorter</RootNamespace>
+    <Authors>Hirbod Behnam</Authors>
+    <Company>Hirbod Behnam</Company>
+    <Description>A small program to shorten URLs and store them in .db file as sqlite database. This is the server exe.</Description>
+    <AssemblyName>URL Shorter Server</AssemblyName>
+    <Version>0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
+  </ItemGroup>
+
+</Project>
