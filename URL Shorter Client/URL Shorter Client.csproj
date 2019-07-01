@@ -6,7 +6,7 @@
     <RootNamespace>URL_Shorter_Client</RootNamespace>
     <Authors>Hirbod Behnam</Authors>
     <Company>Hirbod Behnam</Company>
-    <Version>0.1</Version>
+    <Version>0.2</Version>
     <Description>A small program to shorten URLs and store them in .db file as sqlite database. This is the client exe.</Description>
   </PropertyGroup>
 

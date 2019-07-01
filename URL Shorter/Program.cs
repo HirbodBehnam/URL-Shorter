@@ -17,6 +17,7 @@ namespace URL_Shorter
         private static SQLiteConnection _db;
         private static TcpListener _server;
         public static bool Verbose;
+        private static string _hashedPassword;
         static void Main(string[] args)
         {
             int port = 3303;
@@ -30,11 +31,9 @@ namespace URL_Shorter
                         : opts.dbPath;
                     port = opts.Port;
                     bindAddress = opts.Bind;
+                    _hashedPassword = opts.Password == null ? "" : Hashing.SHA512(opts.Password);
                 })
-                .WithNotParsed(errs =>
-                {
-                    Environment.Exit(2);
-                });
+                .WithNotParsed(errs => Environment.Exit(2));
             try
             {
                 _db = new SQLiteConnection(_dbPath);
@@ -68,7 +67,7 @@ namespace URL_Shorter
                         using (NetworkStream stream = client.GetStream())
                         {
                             StringBuilder sb = new StringBuilder(); 
-                            byte[] buffer = new byte[128];
+                            byte[] buffer = new byte[256];
                             do
                             {
                                 int numberOfBytesRead = stream.Read(buffer, 0, buffer.Length);
@@ -84,6 +83,12 @@ namespace URL_Shorter
                                     //Shorten Url
                                     if(!CheckUrl(input.Url))
                                         throw new InvalidDataException("The URL you send is not a URL");
+                                    if (!string.IsNullOrWhiteSpace(_hashedPassword) && _hashedPassword != input.HashedPassword)
+                                    {
+                                        if(Verbose)
+                                            ConsoleHelper.WriteWarning("Invalid password from " + ((IPEndPoint)client.Client.RemoteEndPoint).Address);
+                                        throw new InvalidDataException("Password is not correct");
+                                    }
                                     Database db = new Database {Target = input.Url};
                                     _db.Insert(db);
                                     result = new JsonObjects.Response
@@ -122,10 +127,6 @@ namespace URL_Shorter
         }
 
         //https://stackoverflow.com/a/7581824/4213397
-        private static bool CheckUrl(string test)
-        {
-            Uri uriResult;
-            return Uri.TryCreate(test, UriKind.Absolute, out uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
-        }
+        private static bool CheckUrl(string test) => Uri.TryCreate(test, UriKind.Absolute, out var uriResult) && (uriResult.Scheme == Uri.UriSchemeHttp || uriResult.Scheme == Uri.UriSchemeHttps);
     }
 }

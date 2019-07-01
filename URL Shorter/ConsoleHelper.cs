@@ -24,7 +24,7 @@ namespace URL_Shorter
         {
             ConsoleColor color = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write("Error: ");
+            Console.Write("Warning: ");
             Console.ForegroundColor = color;
             Console.WriteLine(message);
         }

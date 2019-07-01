@@ -13,8 +13,10 @@ namespace URL_Shorter_Client
         public int Port { get; set; }
         [Option('v', "verbose", Required = false, HelpText = "Set output to verbose messages.")]
         public bool Verbose { get; set; }
+        [Option("password",Required = false, HelpText = "The password for server. [If needed]")]
+        public string Password { get; set; }
     }
-    [Verb("decode", HelpText = "Shorten a URL")]
+    [Verb("decode", HelpText = "Decode a shorted URL")]
     internal class CommandLineArgumentsDecode
     {
         [Option('u',"url",Required = true,HelpText = "URL or token to decode")]

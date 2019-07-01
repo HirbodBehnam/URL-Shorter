@@ -12,6 +12,10 @@
             /// URL to shorten or reverse shorten :\
             /// </summary>
             public string Url { get; set; }
+            /// <summary>
+            /// Hashed password that is send through internet
+            /// </summary>
+            public string HashedPassword { get; set; }
         }
 
         public class Response

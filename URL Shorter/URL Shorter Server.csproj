@@ -8,7 +8,7 @@
     <Company>Hirbod Behnam</Company>
     <Description>A small program to shorten URLs and store them in .db file as sqlite database. This is the server exe.</Description>
     <AssemblyName>URL Shorter Server</AssemblyName>
-    <Version>0.1</Version>
+    <Version>0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

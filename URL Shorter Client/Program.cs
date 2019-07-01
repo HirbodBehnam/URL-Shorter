@@ -13,7 +13,7 @@ namespace URL_Shorter_Client
         static async Task Main(string[] args)
         {
             bool shorten = true;
-            string server = "localhost",url = "";
+            string server = "localhost",url = "",password = "";
             int port = 3303;
             Parser.Default.ParseArguments<CommandLineArgumentsShorten,CommandLineArgumentsDecode>(args)
                 .WithParsed<CommandLineArgumentsShorten>(opt =>
@@ -23,6 +23,7 @@ namespace URL_Shorter_Client
                     port = opt.Port;
                     url = opt.Url;
                     Verbose = opt.Verbose;
+                    password = opt.Password;
                 })
                 .WithParsed<CommandLineArgumentsDecode>(opt =>
                 {
@@ -38,7 +39,7 @@ namespace URL_Shorter_Client
                 TcpClient client = new TcpClient(server, port);
                 string toSend;
                 {
-                    JsonObjects.Input input = new JsonObjects.Input {Shorten = shorten, Url = url};
+                    JsonObjects.Input input = new JsonObjects.Input {Shorten = shorten, Url = url,HashedPassword = password};
                     toSend = JsonConvert.SerializeObject(input);
                     ConsoleHelper.LogVerbose("Sending server: " + toSend);
                 }
@@ -64,6 +65,8 @@ namespace URL_Shorter_Client
             {
                 ConsoleHelper.WriteError(e.ToString());
             }
+
+            Console.ReadKey();
         }
     }
 }
