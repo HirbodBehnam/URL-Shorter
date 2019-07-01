@@ -20,6 +20,11 @@
                 get => _hashedPassword;
                 set
                 {
+                    if (value == null)
+                    {
+                        _hashedPassword = null;
+                        return;
+                    }
                     //https://stackoverflow.com/a/39131803/4213397
                     var bytes = System.Text.Encoding.UTF8.GetBytes(value);
                     using (var hash = System.Security.Cryptography.SHA512.Create())
